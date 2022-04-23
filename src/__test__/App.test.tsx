@@ -6,3 +6,10 @@ test("renders learn react link", () => {
   const linkElement = screen.getByTestId("app");
   expect(linkElement).toBeInTheDocument();
 });
+
+test("rendering a component that uses useLocation", () => {
+  const route = "/country/:name";
+  render(<App />);
+
+  expect(screen.getByTestId("app")).toHaveTextContent(route);
+});

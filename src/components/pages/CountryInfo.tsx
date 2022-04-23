@@ -69,7 +69,7 @@ const CountryInfo = () => {
 
   return (
     <div className="country-info" data-testid="country">
-      <h1>Country Info</h1>
+      <h1>Country Details</h1>
       {loading ? (
         <p>Loading...</p>
       ) : country ? (
@@ -96,7 +96,7 @@ const CountryInfo = () => {
       )}
 
       {country && (
-        <Button size="medium" variant="contained" onClick={getWeatherInfo}>
+        <Button size="medium" variant="outlined" onClick={getWeatherInfo}>
           Capital Weather
         </Button>
       )}
