@@ -13,6 +13,7 @@ const Home: React.FC = () => {
 
   const onSubmit = () => {
     history(`/country/${countryName}`);
+    console.log(`${countryName}`);
   };
 
   return (

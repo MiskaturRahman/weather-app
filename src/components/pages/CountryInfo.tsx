@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import "./country_info.css";
 
@@ -66,7 +66,10 @@ const CountryInfo = () => {
       console.log(error);
     }
   };
-
+  const navigate = useNavigate();
+  const ReturnHome = () => {
+    navigate("/");
+  };
   return (
     <div className="country-info" data-testid="country">
       <h1>Country Details</h1>
@@ -92,7 +95,12 @@ const CountryInfo = () => {
           </div>
         </div>
       ) : (
-        <h3>Country not found by name: {name}</h3>
+        <div>
+          <h3>Country not found by name: {name}</h3>
+          <Button size="medium" variant="outlined" onClick={ReturnHome}>
+            Return Home
+          </Button>
+        </div>
       )}
 
       {country && (
