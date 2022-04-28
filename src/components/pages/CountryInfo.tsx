@@ -29,26 +29,20 @@ const CountryInfo = () => {
   const [weatherInfo, setWeatherInfo] = useState<InitCountryInfo>();
 
   useEffect(() => {
-    getCountry();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const getCountry = async () => {
-    try {
+    const getCountry = async () => {
       setLoading(true);
 
       const response = await fetch(
         `https://restcountries.com/v3.1/name/${name}`
       );
       const data = await response.json();
+      console.log(data);
       setCountry(data.length > 1 ? data[2] : data[0]);
 
       setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  };
+    };
+    getCountry();
+  }, [name]);
 
   const getWeatherInfo = async () => {
     try {

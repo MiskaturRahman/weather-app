@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const Home: React.FC = () => {
-  const history = useNavigate();
+const Home = () => {
+  const navigate = useNavigate();
 
   const [countryName, setCountryName] = useState<string>("");
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setCountryName(event.target.value);
   };
 
   const onSubmit = () => {
-    history(`/country/${countryName}`);
-    console.log(`${countryName}`);
+    navigate(`/country/${countryName}`);
   };
 
   return (
