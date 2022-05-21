@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import App from "../App";
+import App, { LocationDisplay } from "../App";
+import { createMemoryHistory } from "history";
+import { Router } from "react-router-dom";
 
 test("renders learn react link", () => {
   render(<App />);
@@ -8,8 +10,14 @@ test("renders learn react link", () => {
 });
 
 test("rendering a component that uses useLocation", () => {
+  const history = createMemoryHistory();
   const route = "/country/:name";
-  render(<App />);
+  history.push(route);
+  render(
+    <Router location={history.location} navigator={history}>
+      <LocationDisplay />
+    </Router>
+  );
 
-  expect(screen.getByTestId("app")).toHaveTextContent(route);
+  expect(screen.getByTestId("location-display")).toHaveTextContent(route);
 });
